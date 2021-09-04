@@ -1,0 +1,52 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: teal;
+    font-size: 16px;
+}
+img{
+    width: 100%;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+    padding: 1em;
+    margin: 0 auto;
+}
+.score{
+    display: flex;
+    justify-content: center;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: rgba(255, 228, 196, 0.7);
+}
+.score *{
+    margin: 0 1em;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2em;
+}
+
+.buttons button{
+    width: 300px;
+    max-width: 100%;
+    background-color: hsla(6, 93%, 71%, 0.5);
+    border: 5px outset #fa7e70;
+    border-radius: 50%;
+    margin: 0 1em;
+    padding: 2em;
+    transition: all 1s;
+    
+}
+.buttons button:hover{
+    transform: scale(1.2);
+    background-color: salmon;
+    box-shadow: 0 0 100px salmon;
+
+}

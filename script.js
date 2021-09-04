@@ -51,4 +51,4 @@ function game(){
 }
 let player;
 let computer;
-game();
+//game();

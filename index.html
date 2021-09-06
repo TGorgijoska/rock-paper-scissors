@@ -13,11 +13,15 @@
     </div>
     <div class="score">
         <p>You</p>
-        <p id="score"></p>
+        <p id="score">0 : 0</p>
         <p>Computer</p>
     </div>
-    <div class="choices">
-        
+    <div class="score">
+        <div class="display">
+            <p>Your choice: <span id="player"></span></p>
+            <p>Computer choice: <span id="computer"></span></p>    
+        </div>
+        <p id="win">start playing</p>
     </div>
     <div class="buttons">
         <button data-choice="rock"><img src="images/rock.png" alt="rock"></button>
@@ -25,7 +29,7 @@
         <button data-choice="scissors"><img src="images/scissors.png" alt="scissors"></button>
     </div>
     <div class="reset">
-        <button ></button>
+        <button id="reset">RESET</button>
     </div>
     
     <script src="script.js"></script>

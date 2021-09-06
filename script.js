@@ -1,25 +1,65 @@
+let computer;
+let playerPoints = 0;
+let computerPoints = 0;
+
+const score = document.querySelector('#score');
+const displayPlayer = document.querySelector('#player');
+const displayComp = document.querySelector('#computer');
+const winnerRound = document.querySelector('#win');
+const resetBtn = document.querySelector('#reset');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(btn => btn.addEventListener('click', () => {
+    computer = computerPlay();
+    playRound(btn.dataset.choice, computer); 
+})); 
+
+resetBtn.addEventListener('click',reset);
+
 function computerPlay(){
     // randomly returns rock, paper or scissors
     let choices = ['rock', 'paper', 'scissors'];
-    let random = Math.floor((Math.random()*10)/3 );
+    let random = Math.floor((Math.random()*10) % 3 );
     return choices[random];
 }
+
 function playRound(player, computer){
+    displayPlayer.textContent = player;
+    displayComp.textContent = computer;
     if(player == computer){
-        console.log("its a tie choose again");
-        player = playerPlay();
-        computer = computerPlay();
-        playRound(player,computer);
+        winnerRound.textContent = "its a tie";
     }
-    else if(player === "ROCK" && computer==="SCISSORS" || player === "PAPER" && computer === "ROCK" || player==="SCISSORS" && computer ==="PAPER"){
-        console.log(`You win ${player} beats ${computer}`);
-        return true;
+    else if(player === "rock" && computer==="scissors" || player === "paper" && computer === "rock" || player==="scissors" && computer ==="paper"){
+        winnerRound.textContent = `You win ${player} beats ${computer}`;
+        playerPoints++;       
     }
     else {
-        console.log(`You lose ${computer} beats ${player}`);
-        return false;
+        winnerRound.textContent = `You lose ${computer} beats ${player}`;
+        computerPoints++; 
     }
+    score.textContent = `${playerPoints} : ${computerPoints}`;
+    winner();
 }
+function winner (){
+    if(playerPoints == 5){
+        winnerRound.textContent = "CONGRATULATION YOU WON!";
+    }
+    else if (computerPoints == 5){
+        winnerRound.textContent =" ..you lost, better luck next time.";
+    }
+    else return;
+
+
+}
+function reset(){
+    displayComp.textContent = "";
+    displayPlayer.textContent = "";
+    winnerRound.textContent = "start playing";
+    score.textContent = "0 : 0";
+    playerPoints = 0;
+    computerPoints = 0;
+}
+/* 
 function playerPlay(){
     let correct = true;
     let choice;
@@ -31,7 +71,7 @@ function playerPlay(){
     }
     return choice;
     
-}
+} 
 function game(){
     let playerPoints = 0;
     let computerPoints = 0;
@@ -49,6 +89,5 @@ function game(){
     else if(computerPoints > playerPoints) console.log("you lost :/");
     else console.log("It's a tie");
 }
-let player;
-let computer;
+*/
 //game();

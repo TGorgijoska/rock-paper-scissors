@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
 *, *::before, *::after{
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +6,7 @@
 }
 body{
     background-color: teal;
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
 }
 img{
@@ -20,7 +22,7 @@ img{
 .score{
     display: flex;
     justify-content: center;
-    margin: 2em auto;
+    margin: 1em auto;
     padding: 1em;
     background-color: rgba(255, 228, 196, 0.7);
 }
@@ -30,17 +32,17 @@ img{
 .buttons{
     display: flex;
     justify-content: space-evenly;
-    padding: 2em;
+    padding: 5% 10%;
 }
 
 .buttons button{
-    width: 300px;
+    width: 200px;
     max-width: 100%;
     background-color: hsla(6, 93%, 71%, 0.5);
     border: 5px outset #fa7e70;
     border-radius: 50%;
-    margin: 0 1em;
-    padding: 2em;
+    margin: 0 2%;
+    padding: 2%;
     transition: all 1s;
     
 }
@@ -49,4 +51,24 @@ img{
     background-color: salmon;
     box-shadow: 0 0 100px salmon;
 
+}
+#reset{
+    background-color: #fa7e70;
+    color: black;
+    font-weight: 700;
+    border-radius: 100px;
+    border: none;
+    width: 30%;
+    padding: 1em;
+    margin: 0 35%;
+    
+
+}
+#reset:hover{
+    box-shadow: 0 0 20px salmon;
+}
+#player, #computer{
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 0 0 20px salmon;
 }

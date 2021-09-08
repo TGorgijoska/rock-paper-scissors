@@ -35,7 +35,8 @@ img{
     padding: 5% 10%;
 }
 
-.buttons button{
+.game_btn{
+    cursor: pointer;
     width: 200px;
     max-width: 100%;
     background-color: hsla(6, 93%, 71%, 0.5);
@@ -46,11 +47,14 @@ img{
     transition: all 1s;
     
 }
-.buttons button:hover{
+.game_btn:hover{
     transform: scale(1.2);
     background-color: salmon;
     box-shadow: 0 0 100px salmon;
 
+}
+.game_btn:disabled{
+    pointer-events: none;
 }
 #reset{
     background-color: #fa7e70;

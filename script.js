@@ -7,8 +7,9 @@ const displayPlayer = document.querySelector('#player');
 const displayComp = document.querySelector('#computer');
 const winnerRound = document.querySelector('#win');
 const resetBtn = document.querySelector('#reset');
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.game_btn');
 
+// --- event listener for game-play buttons 
 buttons.forEach(btn => btn.addEventListener('click', () => {
     computer = computerPlay();
     playRound(btn.dataset.choice, computer); 
@@ -16,8 +17,8 @@ buttons.forEach(btn => btn.addEventListener('click', () => {
 
 resetBtn.addEventListener('click',reset);
 
+// ----- compiter choice = random 
 function computerPlay(){
-    // randomly returns rock, paper or scissors
     let choices = ['rock', 'paper', 'scissors'];
     let random = Math.floor((Math.random()*10) % 3 );
     return choices[random];
@@ -26,6 +27,7 @@ function computerPlay(){
 function playRound(player, computer){
     displayPlayer.textContent = player;
     displayComp.textContent = computer;
+
     if(player == computer){
         winnerRound.textContent = "its a tie";
     }
@@ -38,9 +40,10 @@ function playRound(player, computer){
         computerPoints++; 
     }
     score.textContent = `${playerPoints} : ${computerPoints}`;
+    // --- check if player or computer has reached 5 points
     winner();
 }
-function winner (){
+function winner(){
     if(playerPoints == 5){
         winnerRound.textContent = "CONGRATULATION YOU WON!";
     }
@@ -48,9 +51,14 @@ function winner (){
         winnerRound.textContent =" ..you lost, better luck next time.";
     }
     else return;
-
-
+    endGame();
 }
+
+function endGame(){
+    buttons.forEach(btn => btn.disabled = true);
+    resetBtn.textContent = "START OVER";
+}
+// --- reset all variables to restart game
 function reset(){
     displayComp.textContent = "";
     displayPlayer.textContent = "";
@@ -58,6 +66,8 @@ function reset(){
     score.textContent = "0 : 0";
     playerPoints = 0;
     computerPoints = 0;
+    buttons.forEach(btn => btn.disabled = false);
+    resetBtn.textContent = "RESET";
 }
 /* 
 function playerPlay(){

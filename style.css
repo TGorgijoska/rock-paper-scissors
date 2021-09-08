@@ -13,21 +13,29 @@ img{
     width: 100%;
 }
 .title{
-    display: flex;
-    justify-content: center;
+    text-align: center;
     font-size: 1.2em;
     padding: 1em;
     margin: 0 auto;
 }
+.player{
+    border: 2px solid hsl(6, 38%, 47%);
+    padding: 0.5em;
+}
+.score-board{
+    text-align: center;
+    color: wheat;
+}
 .score{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 1em auto;
     padding: 1em;
-    background-color: rgba(255, 228, 196, 0.7);
+    /* background-color: rgba(255, 228, 196, 0.7); */
 }
 .score *{
-    margin: 0 1em;
+    margin: 0 0.5em;
 }
 .buttons{
     display: flex;
@@ -49,30 +57,32 @@ img{
 }
 .game_btn:hover{
     transform: scale(1.2);
-    background-color: salmon;
-    box-shadow: 0 0 100px salmon;
+    background-color: #fa8072;
+    box-shadow: 0 0 100px #fa8072;
 
 }
 .game_btn:disabled{
     pointer-events: none;
 }
+.reset{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #reset{
+    font-size: 0.8em;
     background-color: #fa7e70;
     color: black;
     font-weight: 700;
     border-radius: 100px;
     border: none;
-    width: 30%;
+    width: 100px;
     padding: 1em;
-    margin: 0 35%;
-    
-
+    margin: 0 auto;
 }
 #reset:hover{
-    box-shadow: 0 0 20px salmon;
+    box-shadow: 0 0 20px #fa8072;
 }
-#player, #computer{
-    text-transform: uppercase;
-    font-weight: 700;
-    text-shadow: 0 0 20px salmon;
+#win{
+    font-size: 1.2em;
 }

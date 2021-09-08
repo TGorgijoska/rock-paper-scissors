@@ -1,42 +1,38 @@
+// define veriables
 let computer;
 let playerPoints = 0;
 let computerPoints = 0;
-
+// get DOM variables
 const score = document.querySelector('#score');
-const displayPlayer = document.querySelector('#player');
-const displayComp = document.querySelector('#computer');
 const winnerRound = document.querySelector('#win');
 const resetBtn = document.querySelector('#reset');
 const buttons = document.querySelectorAll('.game_btn');
 
-// --- event listener for game-play buttons 
+// --- event listener for buttons 
 buttons.forEach(btn => btn.addEventListener('click', () => {
     computer = computerPlay();
     playRound(btn.dataset.choice, computer); 
 })); 
-
 resetBtn.addEventListener('click',reset);
 
-// ----- compiter choice = random 
+// ----- generate computer choice
 function computerPlay(){
     let choices = ['rock', 'paper', 'scissors'];
     let random = Math.floor((Math.random()*10) % 3 );
     return choices[random];
 }
 
+// find winner of the round
 function playRound(player, computer){
-    displayPlayer.textContent = player;
-    displayComp.textContent = computer;
-
     if(player == computer){
-        winnerRound.textContent = "its a tie";
+        winnerRound.innerHTML = `Its a tie. ${player}${"user".fontsize(3).sub()} equals ${computer}${"comp".fontsize(3).sub()}`;
     }
     else if(player === "rock" && computer==="scissors" || player === "paper" && computer === "rock" || player==="scissors" && computer ==="paper"){
-        winnerRound.textContent = `You win ${player} beats ${computer}`;
+    winnerRound.innerHTML = `You win! ${player}${"user".fontsize(3).sub()} beats ${computer}${"comp".fontsize(3).sub()}`;
         playerPoints++;       
     }
     else {
-        winnerRound.textContent = `You lose ${computer} beats ${player}`;
+        winnerRound.innerHTML = `You lose.. ${computer}${"comp".fontsize(3).sub()} beats ${player}${"user".fontsize(3).sub()}`;
         computerPoints++; 
     }
     score.textContent = `${playerPoints} : ${computerPoints}`;
@@ -60,8 +56,6 @@ function endGame(){
 }
 // --- reset all variables to restart game
 function reset(){
-    displayComp.textContent = "";
-    displayPlayer.textContent = "";
     winnerRound.textContent = "start playing";
     score.textContent = "0 : 0";
     playerPoints = 0;

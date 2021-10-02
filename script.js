@@ -4,7 +4,7 @@ let playerPoints = 0;
 let computerPoints = 0;
 // get DOM variables
 const score = document.querySelector('#score');
-const winnerRound = document.querySelector('#win');
+const winnerRound = document.querySelector('#score-descr');
 const resetBtn = document.querySelector('#reset');
 const buttons = document.querySelectorAll('.game_btn');
 
@@ -28,11 +28,11 @@ function playRound(player, computer){
         winnerRound.innerHTML = `Its a tie. ${player}${"user".fontsize(3).sub()} equals ${computer}${"comp".fontsize(3).sub()}`;
     }
     else if(player === "rock" && computer==="scissors" || player === "paper" && computer === "rock" || player==="scissors" && computer ==="paper"){
-    winnerRound.innerHTML = `You win! ${player}${"user".fontsize(3).sub()} beats ${computer}${"comp".fontsize(3).sub()}`;
+        winnerRound.innerHTML = `<em>You win! ${player}${"user".fontsize(3).sub()} beats ${computer}${"comp".fontsize(3).sub()}</em>`;
         playerPoints++;       
     }
     else {
-        winnerRound.innerHTML = `You lose.. ${computer}${"comp".fontsize(3).sub()} beats ${player}${"user".fontsize(3).sub()}`;
+        winnerRound.innerHTML = `<em>You lose.. ${computer}${"comp".fontsize(3).sub()} beats ${player}${"user".fontsize(3).sub()}</em>`;
         computerPoints++; 
     }
     score.textContent = `${playerPoints} : ${computerPoints}`;
@@ -41,9 +41,11 @@ function playRound(player, computer){
 }
 function winner(){
     if(playerPoints == 5){
+        winnerRound.id = 'win';
         winnerRound.textContent = "CONGRATULATION YOU WON!";
     }
     else if (computerPoints == 5){
+
         winnerRound.textContent =" ..you lost, better luck next time.";
     }
     else return;
@@ -56,6 +58,7 @@ function endGame(){
 }
 // --- reset all variables to restart game
 function reset(){
+    winnerRound.id = "score-descr";
     winnerRound.textContent = "start playing";
     score.textContent = "0 : 0";
     playerPoints = 0;
